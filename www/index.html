@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SexyApps --- サンプル動画検索サービス ---</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--Material Design Lite-->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.pink-indigo.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--自前Javascript-->
+    <script src="js/common.js"></script>
+    <!--EUC-jpエンコーダ-->
+    <script src="js/ecl.js"></script>
+    <!-- xmlパーサー-->
+    <script src="js/jkl-parsexml.js"></script>
+
+    <style>
+        .demo-card-wide.mdl-card {
+            width: 100%;
+        }
+        .demo-card-wide > .mdl-card__title {
+            color: #ffffff;
+            height: 250px;
+            padding: 0;
+        }
+        .demo-card-wide >  .mdl-card__title > .mdl-card__title-text{
+/*            background-color: rgba(0,0,0,0.5);*/
+            background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%);
+            width:100%;
+            padding-left:5px;
+        }
+        .demo-card-wide > .mdl-card__menu {
+            color: #fff;
+        }
+    </style>
+
+
+</head>
+<body onload="request(1);">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">SexyApps</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <!--
+                            <a class="mdl-navigation__link" href="">Link</a>
+                            <a class="mdl-navigation__link" href="">Link</a>
+                            <a class="mdl-navigation__link" href="">Link</a>
+                            <a class="mdl-navigation__link" href="">Link</a>
+                    -->
+                </nav>
+            </div>
+            <!--プログレスバー -->
+            <div id="progress_bar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width:100%; ">
+            </div>                                                
+        </header>
+        
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">MENU</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html?search=巨乳">巨乳</a>
+                <a class="mdl-navigation__link" href="index.html?search=熟女">熟女</a>
+                <a class="mdl-navigation__link" href="index.html?search=人妻">人妻</a>
+                <a class="mdl-navigation__link" href="index.html?search=ロリ系">ロリ系</a>
+                <a class="mdl-navigation__link" href="index.html?search=女子校生">女子校生</a>
+                <a class="mdl-navigation__link" href="index.html?search=中出し">中出し</a>
+                <a class="mdl-navigation__link" href="index.html?search=美少女">美少女</a>
+                <a class="mdl-navigation__link" href="index.html?search=清楚">清楚</a>
+                <a class="mdl-navigation__link" href="index.html?search=貧乳">貧乳・微乳</a>
+                <a class="mdl-navigation__link" href="index.html?search=外国人">外国人</a>
+            </nav>
+        </div>
+        <!--メインコンテンツここから-->
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!--バナー広告 adstir-->
+                <div class="mdl-grid" style="background-color: #fff">
+                </div>                
+                <!-- Your content goes here -->
+                <div class="mdl-grid mdl-grid--no-spacing" style="background-color: #eeeeee">
+                    <div class="mdl-cell mdl-cell--10-col">
+                        <div class="mdl-grid" id="products_list">
+                            <!-- 商品データ -->
+                            <!-- 商品データここまで -->                    
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col" style="background-color: #ffffff">
+                        <!-- 縦広告 adstir-->
+                        <script type="text/javascript">
+                        var adstir_vars = {
+                          ver    : "4.0",
+                          app_id : "MEDIA-13e206a8",
+                          ad_spot: 1,
+                          center : false
+                        };
+                        </script>
+                        <script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js?20130527"></script>                        
+                    </div>
+                </div>
+                <div class="mdl-grid" id="ad_right_side" style="background-color: #ffffff">
+                    <!-- 広告 -->
+                </div>
+            </div>
+            <!--ページここから-->
+            <div class="page-content">
+                <form action="#" id="page_form" name="page_form">  
+                    <div class="mdl-grid" style="width:100%; text-align: center;">
+                        <!-- GO! -->
+                        <div class="mdl-cell mdl-cell--1-col mdl-cell--middle">
+                            <button onclick="clear_page(); request($('#current_page').val());">GO!</button>
+                        </div>                        
+                        <!-- テキストボックス -->
+                        <div class="mdl-cell mdl-cell--2-col mdl-cell--middle">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <!-- スライダー -->
+<!--                             <input class="mdl-slider mdl-js-slider" id="pager_slider" type="range" min="0" max="100" value="1" tabindex="0" onchange="change_slider();"> -->
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="current_page" value="1">
+                                <label class="mdl-textfield__label" for="current_page" id="pager_label">ページ指定:</label>
+                                <span class="mdl-textfield__error">数字を入れてね</span>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--8-col mdl-cell--middle">
+                        </div>
+                        <!-- 次へ -->
+                        <div class="mdl-cell mdl-cell--1-col mdl-cell--middle">
+                            <button onclick="request(nextPage());">NEXT</button>
+                        </div>                        
+                    </div>
+                </form>
+
+            <!--ページここまで-->
+            <!--フッターここから-->
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">SexyApps</div>
+                    <a href="https://affiliate.dmm.com/api/"><img src="http://pics.dmm.com/af/web_service/r18_88_35.gif" width="88" height="35" alt="WEB SERVICE BY DMM.R18" /></a>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">LINK1</a></li>
+                        <li><a href="#">LINK2</a></li>
+                    </ul>
+                </div>
+            </footer>
+        <!--フッターここまで-->
+        </main>
+        <!--メインコンテンツここまで-->
+    </div>
+</body>
+</html>
