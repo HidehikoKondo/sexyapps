@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SexyApps --- サンプル動画検索サービス ---</title>
+    <title>SexyApps --- サンプル動画検索 ---</title>
     <meta charset="UTF-8">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!--Material Design Lite-->
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.pink-indigo.min.css" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
@@ -67,9 +67,9 @@
             </div>
             <!--プログレスバー -->
             <div id="progress_bar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width:100%; ">
-            </div>                                                
+            </div>
         </header>
-        
+
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">MENU</span>
             <nav class="mdl-navigation">
@@ -90,13 +90,13 @@
             <div class="page-content">
                 <!--バナー広告 adstir-->
                 <div class="mdl-grid" style="background-color: #fff">
-                </div>                
+                </div>
                 <!-- Your content goes here -->
                 <div class="mdl-grid mdl-grid--no-spacing" style="background-color: #eeeeee">
                     <div class="mdl-cell mdl-cell--10-col">
                         <div class="mdl-grid" id="products_list">
                             <!-- 商品データ -->
-                            <!-- 商品データここまで -->                    
+                            <!-- 商品データここまで -->
                         </div>
                     </div>
                     <div class="mdl-cell mdl-cell--2-col" style="background-color: #ffffff">
@@ -109,7 +109,7 @@
                           center : false
                         };
                         </script>
-                        <script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js?20130527"></script>                        
+                        <script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js?20130527"></script>
                     </div>
                 </div>
                 <div class="mdl-grid" id="ad_right_side" style="background-color: #ffffff">
@@ -118,12 +118,12 @@
             </div>
             <!--ページここから-->
             <div class="page-content">
-                <form action="#" id="page_form" name="page_form">  
+                <form action="#" id="page_form" name="page_form">
                     <div class="mdl-grid" style="width:100%; text-align: center;">
                         <!-- GO! -->
                         <div class="mdl-cell mdl-cell--1-col mdl-cell--middle">
                             <button onclick="clear_page(); request($('#current_page').val());">GO!</button>
-                        </div>                        
+                        </div>
                         <!-- テキストボックス -->
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--middle">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -139,7 +139,7 @@
                         <!-- 次へ -->
                         <div class="mdl-cell mdl-cell--1-col mdl-cell--middle">
                             <button onclick="request(nextPage());">NEXT</button>
-                        </div>                        
+                        </div>
                     </div>
                 </form>
 
