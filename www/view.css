@@ -1,0 +1,38 @@
+/*カード*/
+.demo-card-wide.mdl-card {
+    width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+    color: #ffffff;
+    height: 250px;
+    padding: 0;
+}
+.demo-card-wide >  .mdl-card__title > .mdl-card__title-text{
+/*  background-color: rgba(0,0,0,0.5);*/
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.8) 100%);
+    width:100%;
+    padding-left:5px;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
+
+/*サイドメニュー*/
+#drawer_div {
+    background-color: #fff;
+    padding: 20px;
+}
+
+/*プログレスバー*/
+#progress_bar {
+     width:100%;
+}
+/*ページャー*/
+#pager {
+     width: 100%;
+     text-align: center;
+}
+/*商品リスト*/
+#product_list {
+    background-color: #fdfdfd;
+}

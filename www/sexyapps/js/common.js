@@ -25,23 +25,23 @@ function build_api_url(api_id, affiliate_id, hits, page, keyword){
         素人：videoc
         成人映画：nikkatsu
         アニメ：anime
-        電子写真集：photo        
+        電子写真集：photo
     */
 
-    console.log("---page---");    
+    console.log("---page---");
     console.log(page);
-    console.log("---offset---");    
-    offset = Number(page)*Number(hits) - Number(hits) + 1 ; 
+    console.log("---offset---");
+    var offset = Number(page)*Number(hits) - Number(hits) + 1 ;
     console.log(offset);
-    
+
     //keywordはEUC-jpでURLエンコードしてね
-    api_url =   "http://www.udonko.net/cors.php/?api_id="+ api_id +
+    var api_url =   "http://www.udonko.net/cors.php/?api_id="+ api_id +
                 "&affiliate_id="+ affiliate_id +
                 "&operation=ItemList&version=2.00&timestamp="+get_timestamp()+
                 "&site=DMM.co.jp&hits="+ hits +
                 "&offset="+ offset +
                 "&service=digital" +
-                "&floor=videoc" + 
+                "&floor=videoc" +
                 "&sort=review&keyword="+ keyword;
 
 /*
@@ -51,12 +51,12 @@ function build_api_url(api_id, affiliate_id, hits, page, keyword){
                 "&site=DMM.co.jp&hits="+ hits +
                 "&offset="+ offset +
                 "&service=digital" +
-                "&floor=videoc" + 
+                "&floor=videoc" +
                 "&sort=review&keyword="+ keyword;
 */
-                
+
     console.log(api_url);
-    
+
     return api_url;
 }
 
@@ -70,7 +70,7 @@ function get_timestamp(){
     var min   = ( d.getMinutes() < 10 ) ? '0' + d.getMinutes() : d.getMinutes();
     var sec   = ( d.getSeconds() < 10 ) ? '0' + d.getSeconds() : d.getSeconds();
     var timestamp = year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
-    
+
     return timestamp;
 }
 
@@ -124,12 +124,12 @@ function display_product(response){
     total_pages = Math.ceil(Number($(response).find('total_count').text()) / OFFSET);
 
     $("#pager_label").text("ページ指定:1~"+total_pages);
-    $("#pager_slider").attr({ 
+    $("#pager_slider").attr({
         max: total_pages,
         min: 1,
     });
-    
-        
+
+
     //商品データ表示カード
     $(response).find('item').each(function(i){
         //ヒアドキュメント
@@ -152,7 +152,7 @@ function display_product(response){
                 </div>
             </div>
         */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
-        
+
         /*
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="fa fa-google-plus"></i>
@@ -162,17 +162,17 @@ function display_product(response){
             </button>
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                 <i class="fa fa-twitter"></i>
-            </button>            
+            </button>
         */
-        
-        
+
+
         var title = $(this).find('title').text();
         var image_url = $(this).find('imageURL').find('large').text();
         var actress = $(this).find('iteminfo').find('actress').eq(0).find('name').text();
         var series = $(this).find('iteminfo').find('series').eq(0).find('name').text();
         var label = $(this).find('iteminfo').find('label').eq(0).find('name').text();
         var url = $(this).find('affiliateURL').text();
-        
+
         //テンプレに挿入
         var object = {
             tmp_title: title,
@@ -201,7 +201,7 @@ function change_slider(){
 
 //プログレスバーの表示切り替え
 function display_loading(hidden){
-    if(hidden){        
+    if(hidden){
         $("#progress_bar").show();
     }else{
         $("#progress_bar").hide();
@@ -214,15 +214,15 @@ function getParam() {
     var url = location.href;
     console.log("----url----");
     console.log(url);
-    
+
     //getパラメータがurlについてない時は、初期値を返す
     if(url.indexOf("?search=") == -1){
         console.log("searchなし");
         return "巨乳";
     }else{
-        console.log("searchあり"); 
+        console.log("searchあり");
     }
-    
+
     //getパラメータを取得
     parameters = url.split("?");
     params = parameters[1].split("&");
@@ -232,10 +232,10 @@ function getParam() {
         paramsArray.push(neet[0]);
         paramsArray[neet[0]] = neet[1];
     }
-    
+
     //searchパラメータの値を返す
     var categoryKey = paramsArray["search"];
-    console.log("---search---");    
+    console.log("---search---");
     console.log(decodeURIComponent(categoryKey));
     return decodeURIComponent(categoryKey);
 }
