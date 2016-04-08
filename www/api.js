@@ -106,7 +106,7 @@ function create_product_list(json){
         //テンプレに挿入
         var object = {
             tmp_name: name,
-            tmp_image_url: imageURL,
+//            tmp_image_url: imageURL,
             tmp_bust: bust,
             tmp_hip: hip,
             tmp_waist: waist,
@@ -140,4 +140,3 @@ function show_loading(hidden){
         $("#progress_bar").hide();
     }
 }
-
