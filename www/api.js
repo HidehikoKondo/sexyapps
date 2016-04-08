@@ -3,16 +3,40 @@ var API_ID = "NFcDM3yDYSkGmUt1B0tK";
 var AFFILIATE_ID = "sexyapps-990";
 
 //検索件数
-var hits = 100;
+var hits = 48;
+
+function next_page(){
+    //次のページ番号
+    var next_page_no = Number($("#page_no").val())+1;
+
+    //入力したバストサイズ
+    var bustsize = $("#bustsize").val();
+    request(next_page_no, bustsize);
+}
+
+function show_page(json){
+    //ページ数更新、nextボタン処理。　合計人数と表示している人数
+    var total = json.result.total_count;
+    var current = Number(json.request.parameters.offset)+ Number(json.result.result_count) -1
+    //合計人数に達したらボタンを無効にする
+    if(total <= current){
+        $("#next").prop("disabled", true);
+    }
+    $("#total").text(total);
+    $("#current").text(current);
+}
 
 //データのリクエスト
 function request(page, bustsize){
+    //次へボタンを有効にする
+    $("#next").prop("disabled", false);
+
+    //現在のページを更新
+    $("#page_no").val(page);
+
     //ローディング表示
     show_loading(true);
     var api_url = api_url_actress(API_ID, AFFILIATE_ID, hits, page, bustsize)
-
-    console.log("api_url");
-    console.log(api_url);
 
     $.ajax({
         type: 'GET',
@@ -21,10 +45,12 @@ function request(page, bustsize){
         dataType: "jsonp",
         cache: false,
         success: function(json) {
+            //商品一覧作成
             create_product_list(json);
+            //ページ表示
+            show_page(json);
         },
         error: function(json) {
-            console.log(json);
             alert("エラー");
         },
         complete:function(json){
@@ -32,24 +58,14 @@ function request(page, bustsize){
             show_loading(false);
         }
 	});
-
-
     return;
 }
 
 function create_product_list(json){
-    console.log(json);
     var actress_list = json.result.actress;
     $(actress_list).each(function(i){
         var actress = actress_list[i];
 
-        console.log(actress.name);
-        console.log(actress.bust);
-        console.log(actress.waist);
-        console.log(actress.hip);
-        console.log(actress.cup);
-        console.log(actress.height);
-        console.log(actress.listURL.digital);
         //ヒアドキュメント
         var heredoc = (function () {/*
             <div class="mdl-cell mdl-cell--3-col-desktop	">
@@ -63,13 +79,13 @@ function create_product_list(json){
                         <strong>${tmp_height}cm</strong>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" onclick="window.open('${tmp_list_url}')">動画をみる</button>
+                        <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" onclick="location.href='${tmp_list_url}'">動画をみる</button>
                     </div>
                 </div>
             </div>*/}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
 
-        //TODO 画像以外もnullチェックちゃんとやっとこう
-        var imageURL = "jacket.jpg";
+        //初期設定
+        var imageURL = "noimage.png";
         var name = "-";
         var bust = "-";
         var hip = "-";
@@ -78,6 +94,7 @@ function create_product_list(json){
         var height = "-";
         var list_url = "http://www.sexyapps.download";
 
+        //データを変数に設定
         if(actress.name){
             name = actress.name;
         }
@@ -106,7 +123,7 @@ function create_product_list(json){
         //テンプレに挿入
         var object = {
             tmp_name: name,
-//            tmp_image_url: imageURL,
+            tmp_image_url: imageURL,
             tmp_bust: bust,
             tmp_hip: hip,
             tmp_waist: waist,
@@ -115,28 +132,34 @@ function create_product_list(json){
             tmp_list_url: list_url
         }
         var html = jQuery.tmpl(heredoc, object);
-        $('#products_list').append(html);
 
+        //商品欄に挿入
+        $('#products_list').append(html);
     });
 }
 
 //apiのurlを作成
 function api_url_actress(api_id, affiliate_id, hits, page, bustsize){
-    var offset = Number(page)*Number(hits) - Number(hits) + 1 ;
+    var offset = Number(page)*Number(hits) - Number(hits) + 1;
+
+    var bustsize_param = "";
+    if(bustsize >= 120){
+        //120以降全部対象にする
+        bustsize_param = "120";
+    }else if(bustsize <= 70){
+        //70以下を全部対象
+        bustsize_param = "-70";
+    }else{
+        //入力したサイズのみを対象
+        bustsize_param = bustsize+ "-"+ bustsize;
+    }
+
     var api_url =   "https://api.dmm.com/affiliate/v3/ActressSearch?api_id="+ api_id+
                     "&affiliate_id="+ affiliate_id+
-                    "&bust="+ bustsize+ "-"+ bustsize+
+                    "&bust="+ bustsize_param+
                     "&hits="+ hits+
                     "&offset="+ offset+
                     "&output=json&callback=callback";
     return api_url;
 }
 
-//プログレスバーの表示切り替え
-function show_loading(hidden){
-    if(hidden){
-        $("#progress_bar").show();
-    }else{
-        $("#progress_bar").hide();
-    }
-}

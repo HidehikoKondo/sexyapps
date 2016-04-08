@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>opapasize</title>
+    <title>おぱぱサイズ！ --バストサイズで探すAV女優検索サイト--</title>
     <meta charset="UTF-8">
     <meta content="" name="author">
     <meta content="" name="keywords">
@@ -22,11 +22,11 @@
     <!--自前CSS-->
     <link href="view.css" rel="stylesheet">
 </head>
-<body>
+<body onload="request(1, 85);">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <span>OPAPASIZE!!</span>
+                <span>バストサイズで探すAV女優検索サイト</span>
 
                 <div class="mdl-layout-spacer"></div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
@@ -40,15 +40,15 @@
         </header>
 
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">OPAPASIZE!!</span>
+            <span class="mdl-layout-title">おぱぱサイズ！</span>
             <!--スライダ-->
             <div id="drawer_div">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <label class="mdl-textfield__label" for="current_page" id="pager_label">サイズを入力(cm単位):</label>
-                    <input class="mdl-textfield__input" type="number" id="bustsize" pattern="-?[0-9]*(\.[0-9]+)?" id="current_page" value="85" max="100" min="70" onchange="change_bustsize();">
-                    <span class="mdl-textfield__error">70~100の数字を入れてね</span>
+                    <label class="mdl-textfield__label" for="current_page" id="pager_label">バストサイズを入力(cm単位):</label>
+                    <input class="mdl-textfield__input" type="number" id="bustsize" pattern="-?[0-9]*(\.[0-9]+)?" id="current_page" value="85" max="120" min="70" onchange="change_bustsize();">
+                    <span class="mdl-textfield__error">70~120の数字を入れてね</span>
                 </div>
-                <input class="mdl-slider mdl-js-slider" id="bust_slider" type="range" min="70" max="100" value="1" tabindex="0" value="85" onchange="change_slider();">
+                <input class="mdl-slider mdl-js-slider" id="bust_slider" type="range" min="70" max="120" value="1" tabindex="0" value="85" onchange="change_slider();">
             </div>
             <nav class="mdl-navigation">
 <!--
@@ -71,7 +71,7 @@
                 <div class="page-content">
                     <!--バナー広告 adstir-->
                     <div class="mdl-grid">
-                        バナー広告
+<!--                         バナー広告 -->
                     </div>
                     <!-- Your content goes here -->
                     <div class="mdl-grid mdl-grid--no-spacing">
@@ -82,12 +82,16 @@
                                 <!--ページ切り替え-->
                             </div>
                             <div id="pager">
-                                <button onclick="request(1, 70);">NEXT</button>
+                                <button id="next" onclick="next_page();">NEXT</button>
+                                <div>
+                                    <span id="current">0</span> / <span id="total">0</span>
+                                    <input type="hidden" id="page_no" value="">
+                                </div>
                             </div>
                         </div>
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-phone mdl-cell--hide-tablet">
                             <!-- 縦広告 adstir-->
-                            縦広告
+<!--                             バナー広告 -->
                         </div>
                     </div>
                     <!--ページここから-->
@@ -96,7 +100,7 @@
                     <!--ページここまで-->
                     <div class="mdl-grid" id="ad_right_side">
                         <!-- 広告 -->
-                        バナー広告
+<!--                         バナー広告 -->
                     </div>
                 </div><!--メインコンテンツここまで-->
             </div>
