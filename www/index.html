@@ -45,12 +45,13 @@
             <div id="drawer_div">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <label class="mdl-textfield__label" for="current_page" id="pager_label">サイズを入力(cm単位):</label>
-                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="current_page" value="80">
-                    <span class="mdl-textfield__error">60~100の数字を入れてね</span>
+                    <input class="mdl-textfield__input" type="number" id="bustsize" pattern="-?[0-9]*(\.[0-9]+)?" id="current_page" value="85" max="100" min="70" onchange="change_bustsize();">
+                    <span class="mdl-textfield__error">70~100の数字を入れてね</span>
                 </div>
-                <input class="mdl-slider mdl-js-slider" id="pager_slider" type="range" min="60" max="100" value="1" tabindex="0" onchange="change_slider();">
+                <input class="mdl-slider mdl-js-slider" id="bust_slider" type="range" min="70" max="100" value="1" tabindex="0" value="85" onchange="change_slider();">
             </div>
             <nav class="mdl-navigation">
+<!--
                 <a class="mdl-navigation__link" href="index.html?size=78">~A</a>
                 <a class="mdl-navigation__link" href="index.html?size=80">A</a>
                 <a class="mdl-navigation__link" href="index.html?size=83">B</a>
@@ -61,6 +62,7 @@
                 <a class="mdl-navigation__link" href="index.html?size=95">G</a>
                 <a class="mdl-navigation__link" href="index.html?size=98">H</a>
                 <a class="mdl-navigation__link" href="index.html?size=100">I~</a>
+-->
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -80,7 +82,7 @@
                                 <!--ページ切り替え-->
                             </div>
                             <div id="pager">
-                                <button onclick="request(1, 88);">NEXT</button>
+                                <button onclick="request(1, 70);">NEXT</button>
                             </div>
                         </div>
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-phone mdl-cell--hide-tablet">
