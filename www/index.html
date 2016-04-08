@@ -18,6 +18,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <!--自前Javascript-->
     <script src="view.js"></script>
+    <script src="api.js"></script>
     <!--自前CSS-->
     <link href="view.css" rel="stylesheet">
 </head>
@@ -75,40 +76,16 @@
                         <div class="mdl-cell mdl-cell--12-col mdl-cell--10-col-desktop">
                             <div class="mdl-grid" id="products_list" style="background-color: #fdfdfd">
                                 <!-- 商品データ -->
-                                <div class="mdl-cell mdl-cell--3-col-desktop	">
-                                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                                        <div class="mdl-card__title" style="background: url('jacket.jpg') top / cover;">
-                                            <h2 class="mdl-card__title-text">名前</h2>
-                                        </div>
-                                        <div class="mdl-card__supporting-text">
-                                            <strong>B:90 W:60 H90</strong><br />
-                                            <strong>ncup</strong><br />
-                                            <strong>158cm</strong>
-                                        </div>
-                                        <div class="mdl-card__actions mdl-card--border">
-                                            <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">動画をみる</button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- 商品データここまで -->
                                 <!--ページ切り替え-->
-                                <div id="pager">
-                                    <button onclick="">NEXT</button>
-                                </div>
+                            </div>
+                            <div id="pager">
+                                <button onclick="request(1, 88);">NEXT</button>
                             </div>
                         </div>
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-phone mdl-cell--hide-tablet">
                             <!-- 縦広告 adstir-->
                             縦広告
-                            <script type="text/javascript">
-                                var adstir_vars = {
-                                ver    : "4.0",
-                                app_id : "MEDIA-13e206a8",
-                                ad_spot: 1,
-                                center : false
-                                };
-                            </script>
-                            <script src="https://js.ad-stir.com/js/adstir.js?20130527" type="text/javascript"></script>
                         </div>
                     </div>
                     <!--ページここから-->
