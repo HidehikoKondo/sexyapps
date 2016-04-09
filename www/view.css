@@ -2,16 +2,22 @@
 .card {
     background-color: #ffffff;
     background-repeat: no-repeat;
-    height: 105px;
-    padding: 10px 0px 10px 135px;
+    height: 125px;
+    padding: 0;
     box-shadow:0 2px 2px 0 #dddddd;
     border-radius: 5px;
     color:grey
 }
 
+.thumbnail {
+    width:125px;
+    height:125px;
+    border-radius:5px 0 0 5px;
+    margin:0 10px 0 0;
+    float:left;
+}
 
 .card_title {
-    margin-bottom:10px;
     overflow: auto;
     white-space: nowrap;
 }
@@ -19,11 +25,12 @@
 .actress_name {
     font-size: 1.4em;
     text-overflow: ellipsis;
+    margin:10px 0 10px 0;
 }
 
 .card_div {
     float:left;
-/*     min-width:20px; */
+/*     min-width:27px; */
     border-right-color: #eeeeee;
     border-right-style: solid;
     border-right-width: 1px;
