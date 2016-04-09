@@ -3,7 +3,7 @@ var API_ID = "NFcDM3yDYSkGmUt1B0tK";
 var AFFILIATE_ID = "sexyapps-990";
 
 //検索件数
-var hits = 48;
+var hits = 50;
 
 function next_page(){
     //次のページ番号
