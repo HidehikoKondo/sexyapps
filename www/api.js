@@ -68,7 +68,7 @@ function create_product_list(json){
 
         //ヒアドキュメント
         var heredoc = (function () {/*
-            <div class="mdl-cell mdl-cell--3-col-desktop	">
+            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell-2-col-tablet mdl-cell--2-col-phone">
                 <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title" style="background: url('${tmp_image_url}') top / cover;">
                         <h2 class="mdl-card__title-text">${tmp_name}</h2>
