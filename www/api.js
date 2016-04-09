@@ -69,11 +69,14 @@ function create_product_list(json){
         //ヒアドキュメント
         var heredoc = (function () {/*
             <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell-6-col-tablet mdl-cell--12-col-phone">
-                <div class="card" style="background-image: url('${tmp_image_url}');">
+                <div class="card">
+                    <a href="${tmp_list_url}">
+                        <img class="thumbnail" src="${tmp_image_url}">
+                    </a>
                     <div class="card_title">
                         <div class="actress_name"><a href="${tmp_list_url}">${tmp_name}</a></div>
                     </div>
-                    <div class="card_body">
+
                         <div class="card_div">
                             <div class="size_value">${tmp_bust}</div>
                             <div class="size_key">bust</div>
@@ -95,7 +98,7 @@ function create_product_list(json){
                             <div class="size_value">${tmp_height}</div>
                             <div class="size_key">height</div>
                         </div>
-                    </div>
+
                 </div>
             </div>
         */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
