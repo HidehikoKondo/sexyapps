@@ -68,21 +68,37 @@ function create_product_list(json){
 
         //ヒアドキュメント
         var heredoc = (function () {/*
-            <div class="mdl-cell mdl-cell--3-col-desktop mdl-cell-2-col-tablet mdl-cell--2-col-phone">
-                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title" style="background: url('${tmp_image_url}') top / cover;">
-                        <h2 class="mdl-card__title-text">${tmp_name}</h2>
+            <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell-6-col-tablet mdl-cell--12-col-phone">
+                <div class="card" style="background-image: url('${tmp_image_url}');">
+                    <div class="card_title">
+                        <div class="actress_name"><a href="${tmp_list_url}">${tmp_name}</a></div>
                     </div>
-                    <div class="mdl-card__supporting-text">
-                        <strong>B:${tmp_bust} W:${tmp_waist} H:${tmp_hip}</strong><br />
-                        <strong>${tmp_cup}カップ</strong><br />
-                        <strong>${tmp_height}cm</strong>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" onclick="location.href='${tmp_list_url}'">動画をみる</button>
+                    <div class="card_body">
+                        <div class="card_div">
+                            <div class="size_value">${tmp_bust}</div>
+                            <div class="size_key">bust</div>
+                        </div>
+                        <div class="card_div">
+                            <div class="size_value">${tmp_waist}</div>
+                            <div class="size_key">waist</div>
+                        </div>
+                        <div class="card_div">
+                            <div class="size_value">${tmp_hip}</div>
+                            <div class="size_key">hip</div>
+                        </div>
+
+                        <div class="card_div">
+                            <div class="size_value">${tmp_cup}</div>
+                            <div class="size_key">cup</div>
+                        </div>
+                        <div class="card_div">
+                            <div class="size_value">${tmp_height}</div>
+                            <div class="size_key">height</div>
+                        </div>
                     </div>
                 </div>
-            </div>*/}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
+            </div>
+        */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
 
         //初期設定
         var imageURL = "noimage.png";
