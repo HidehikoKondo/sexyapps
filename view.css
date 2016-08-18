@@ -1,0 +1,72 @@
+/*カード*/
+.card {
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    height: 125px;
+    padding: 0;
+    box-shadow: 0 2px 2px 0 #dddddd;
+    border-radius: 5px;
+    color: grey
+}
+
+.thumbnail {
+    width: 125px;
+    height: 125px;
+    border-radius: 5px 0 0 5px;
+    margin: 0 10px 0 0;
+    float: left;
+}
+
+.card_title {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.actress_name {
+    font-size: 1.4em;
+    text-overflow: ellipsis;
+    margin:10px 0 10px 0;
+}
+
+.card_div {
+    float:left;
+/*     min-width:27px; */
+    border-right-color: #eeeeee;
+    border-right-style: solid;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+.size_value {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin:0px;
+}
+
+.size_key {
+    margin-top: -5px;
+    padding: 0px;
+    font-size: 0.7em;
+}
+
+/*サイドメニュー*/
+#drawer_div {
+    background-color: #fff;
+    padding: 20px;
+}
+
+/*プログレスバー*/
+#progress_bar {
+     width: 100%;
+}
+/*ページャー*/
+#pager {
+     width: 100%;
+     text-align: center;
+}
+/*商品リスト*/
+#product_list {
+    background-color: #fdfdfd;
+}
